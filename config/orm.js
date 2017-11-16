@@ -16,6 +16,7 @@ var orm = {
       cb(result);
     });
   },
+
   eatBurger: function(burgerId, cb) {
     var id = burgerId;
     connection.query("UPDATE burgers SET devoured=1 WHERE id=?", [id], function(err, result) {
@@ -23,13 +24,14 @@ var orm = {
       cb(result);
     });
   },
+
   showBurgers: function(tableName, cb) {
-  connection.query('SELECT * FROM burgers', function(err, result) {
+    connection.query('SELECT * FROM burgers', function(err, result) {
       if (err) throw err;
-      //console.log("The burger function test :" + result[0].burger_name); 
+      console.log("The burger function test :" + result[0].burger_name); 
       cb(result);
-  });
- }
+    });
+  }
 };
 
 module.exports = orm;
